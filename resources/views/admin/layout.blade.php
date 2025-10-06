@@ -24,7 +24,7 @@
             <a href="#" class="block py-2.5 px-6 mx-3 rounded-xl hover:bg-blue-500 hover:text-white transition"><i class="ri-presentation-line mr-3"></i>Guru</a>
             <a href="#" class="block py-2.5 px-6 mx-3 rounded-xl hover:bg-blue-500 hover:text-white transition"><i class="ri-graduation-cap-line mr-3"></i>Siswa</a>
             <a href="{{ route('admin.eventnews.index') }}" class="block py-2.5 px-6 mx-3 rounded-xl hover:bg-blue-500 hover:text-white transition"><i class="ri-news-line mr-3"></i>News</a>
-            <a href="#" class="block py-2.5 px-6 mx-3 rounded-xl hover:bg-blue-500 hover:text-white transition"><i class="ri-gallery-view-2 mr-3"></i>Galeri</a>
+            <a href="{{ route('admin.videogallery.index') }}" class="block py-2.5 px-6 mx-3 rounded-xl hover:bg-blue-500 hover:text-white transition"><i class="ri-video-line mr-3"></i>Video Gallery</a>
             <a href="{{ route('admin.ekstrakurikuler.index') }}" class="block py-2.5 px-6 mx-3 rounded-xl hover:bg-blue-500 hover:text-white transition"><i class="ri-team-line mr-3"></i>Ekstrakurikuler</a>
         </nav>
         <div class="relative flex flex-col mt-auto mb-4 mx-3">

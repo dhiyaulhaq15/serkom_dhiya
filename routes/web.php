@@ -10,6 +10,7 @@ use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VideoGalleryController;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -50,6 +51,9 @@ Route::put('/admin/ekstrakurikuler/{id}', [EkstrakurikulerController::class, 'up
 Route::delete('/admin/ekstrakurikuler/{id}', [EkstrakurikulerController::class, 'destroy'])->name('admin.ekstrakurikuler.destroy');
 
 Route::get('/admin/eventnews/index', [EventNewsController::class, 'index'])->name('admin.eventnews.index');
-Route::get('/admin/news/create', [EventNewsController::class, 'create'])->name('admin.eventnews.create');
+Route::get('/admin/eventnews/create', [EventNewsController::class, 'create'])->name('admin.eventnews.create');
 Route::post('/admin/news', [EventNewsController::class, 'store'])->name('admin.eventnews.store');
 
+Route::get('/admin/videogallery/index', [VideoGalleryController::class, 'index'])->name('admin.videogallery.index');
+Route::get('/admin/videogallery/create', [VideoGalleryController::class, 'create'])->name('admin.videogallery.create');
+Route::post('/admin/videogallery', [VideoGalleryController::class, 'store'])->name('admin.videogallery.store');

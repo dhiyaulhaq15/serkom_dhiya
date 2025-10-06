@@ -33,7 +33,7 @@ class EventNewsController extends Controller
         if ($request->hasFile('gambar')) {
             $originalName = $request->file('gambar')->getClientOriginalName();
             $timestampedName = time() . '-' . $originalName;
-            $filename = $request->file('gambar')->storeAs('news', $timestampedName, 'public');
+            $filename = $request->file('gambar')->storeAs('eventnews', $timestampedName, 'public');
         }
 
         EventsNews::create([

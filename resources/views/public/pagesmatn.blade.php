@@ -168,23 +168,26 @@
             {{-- <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Membentuk karakter tangguh, wawasan kebangsaan, keterampilan
                 proyek, dan kemandirian kreatif siswa.</p> --}}
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
-                <!-- Card -->
-                <div class="bg-white rounded-xl shadow hover:shadow-xl transition overflow-hidden">
-                    <img src="{{ asset('images/belanegara.jpg') }}" class="h-44 w-full object-cover">
-                    <div class="p-5 text-left">
-                        <div class="flex items-center mb-3">
-                            {{-- <i class="ri-mic-fill text-blue-600 text-2xl mr-2"></i> --}}
-                            <h3 class="text-lg font-semibold text-gray-800">Bela Negara</h3>
+                {{-- <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mb-12">
+                    @foreach ($ekstrakurikulers as $eskul)
+                        <div class="bg-white rounded-xl shadow hover:shadow-xl transition overflow-hidden">
+                            <img src="{{ asset($eskul->image) }}" class="h-44 w-full object-cover">
+                            <div class="p-5 text-left">
+                                <div class="flex items-center mb-3">
+                                    <h3 class="text-lg font-semibold text-gray-800">{{ $eskul->title }}</h3>
+                                </div>
+                                <p class="text-sm text-gray-600 mb-4">
+                                    {{ Str::limit($eskul->description, 100) }}
+                                </p>
+                                <a href="{{ url('/eskul/' . $eskul->slug) }}"
+                                    class="inline-block px-4 py-2 text-sm bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+                                    Lihat Selengkapnya
+                                </a>
+                            </div>
                         </div>
-                        <p class="text-sm text-gray-600 mb-4">
-                            Semangat nasionalisme, disiplin, dan tanggung jawab melalui pelatihan kepemimpinan.
-                        </p>
-                        <a href="{{ url('/eskul/belanegara') }}"
-                            class="inline-block px-4 py-2 text-sm bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
-                            Lihat Selengkapnya
-                        </a>
-                    </div>
-                </div>
+                    @endforeach
+                </div> --}}
+
 
                 <div class="bg-white rounded-xl shadow hover:shadow-xl transition overflow-hidden">
                     <img src="{{ asset('images/belanegara.jpg') }}" class="h-44 w-full object-cover">
@@ -220,7 +223,7 @@
                 <h2 class="text-3xl md:text-4xl font-bold text-blue-800">Galeri Video</h2>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mb-12">
+            {{-- <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mb-12">
                 @for ($i = 0; $i < 6; $i++)
                     <div class="relative rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition">
                         <iframe class="w-full h-64 md:h-48"
@@ -230,7 +233,32 @@
                             allowfullscreen></iframe>
                     </div>
                 @endfor
+            </div> --}}
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mb-12">
+                @foreach ($video_galleries as $video)
+                    @php
+                        // Ambil ID video dari link YouTube
+                        preg_match(
+                            '/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/',
+                            $video->youtube_link,
+                            $matches
+                        );
+                        $videoId = $matches[1] ?? null;
+                    @endphp
+
+                    @if ($videoId)
+                        <div class="relative rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition">
+                            <iframe class="w-full h-64 md:h-48"
+                                src="https://www.youtube.com/embed/{{ $videoId }}?rel=0&showinfo=0"
+                                title="Galeri Video" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                        </div>
+                    @endif
+                @endforeach
             </div>
+
 
             <div class="text-center">
                 <a href="https://www.youtube.com/@kasektncimahi" target="_blank"

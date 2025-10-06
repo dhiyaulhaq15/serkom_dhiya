@@ -2,8 +2,8 @@
 @section('title', 'Dashboard')
 @section('content')
     <div class="h-20 w-screen">
-        <header class="flex items-center justify-between bg-white p-5 shadow-md rounded-2xl p-4 mt-4">
-            <h1 class="text-xl font-bold">Daftar Event & News</h1>
+        <header class="flex items-center justify-between bg-white p-5 shadow-md rounded-2xl p-  4 mt-4">
+            <h1 class="text-xl font-bold">Video Gallery</h1>
             <div class="flex items-center bg-gray-100 rounded-xl px-4 py-2">
                 <input type="text" placeholder="Search" class="bg-transparent ml-2 focus:outline-none">
                 <i class="ri-search-line"></i>
@@ -11,9 +11,9 @@
         </header>
         {{-- <div class="max-w-screen mx-auto mt-4 px-4 py-6"> --}}
         <div class="flex justify-between items-center mb-4 mt-4">
-            <a href="{{ route('admin.eventnews.create') }}"
+            <a href="{{ route('admin.videogallery.create') }}"
                 class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg shadow text-sm font-semibold">
-                + Tambah
+                + Tambah Pengguna
             </a>
         </div>
         <div class="overflow-x-auto bg-white rounded-2xl shadow-md mt-6">
@@ -21,23 +21,15 @@
                 <thead class="bg-white-100">
                     <tr>
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">#</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Gambar</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Title</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Content</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Youtube Link</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Aksi</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200">
-                    @foreach ($eventsnews as $eventnews)
+                    @foreach ($videos as $video)
                         <tr>
                             <td class="px-6 py-4 text-sm text-gray-700">{{ $loop->iteration }}</td>
-                            <td class="px-6 py-4 text-sm text-gray-700">
-                                <img src="{{ asset('storage/' . $eventnews->gambar) }}" alt="Gambar Eskul"
-                                    class="w-20 h-14 object-cover rounded-md">
-                            </td>
-                            <td class="px-6 py-4 text-sm text-gray-700">{{ $eventnews->title }}</td>
-                            <td class="px-6 py-4 text-sm text-gray-700">{{      $eventnews->content }}</td>
-                            <td class="px-6 py-4 text-sm text-gray-700">{{ $eventnews->user_id }}</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">{{ $video->youtube_link }}</td>
                             <td class="px-6 py-4 text-sm text-gray-700">
                                 <div class="flex items-center space-x-2">
                                     <a href="#"
