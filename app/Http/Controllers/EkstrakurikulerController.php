@@ -48,13 +48,13 @@ class EkstrakurikulerController extends Controller
         return view('admin.ekstrakurikuler.create');
     }
 
-    public function edit($id)
+    public function edit(Ekstrakurikuler $eskul)
     {
-        $eskul = Ekstrakurikuler::findOrFail($id);
+        $eskul = Ekstrakurikuler::findOrFail($eskul);
         return view('admin.ekstrakurikuler.edit', compact('eskul'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Ekstrakurikuler $eskul)
     {
         $request->validate([
             'nama' => 'required|string|max:255',
@@ -62,15 +62,27 @@ class EkstrakurikulerController extends Controller
             'gambar' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
-        $eskul = Ekstrakurikuler::findOrFail($id);
+        $eskul = Ekstrakurikuler::findOrFail($eskul);
 
         $filename = $eskul->gambar; // default: gambar lama
 
+        // if ($request->hasFile('gambar')) {
+        //     $originalName = $request->file('gambar')->getClientOriginalName();
+        //     $timestampedName = time() . '-' . $originalName;
+        //     $filename = $request->file('gambar')->storeAs('eskul', $timestampedName, 'public');
+        // }
+
         if ($request->hasFile('gambar')) {
+            // Hapus gambar lama
+            if ($eskul->gambar && Storage::disk('public')->exists($eskul->gambar)) {
+                Storage::disk('public')->delete($eskul->gambar);
+            }
+
             $originalName = $request->file('gambar')->getClientOriginalName();
             $timestampedName = time() . '-' . $originalName;
             $filename = $request->file('gambar')->storeAs('eskul', $timestampedName, 'public');
         }
+
 
         $eskul->update([
             'nama' => $request->nama,
@@ -81,9 +93,9 @@ class EkstrakurikulerController extends Controller
         return redirect()->route('admin.ekstrakurikuler.index')->with('success', 'Data berhasil diperbarui!');
     }
 
-    public function destroy($id)
+    public function destroy(Ekstrakurikuler $eskul)
     {
-        $eskul = Ekstrakurikuler::findOrFail($id);
+        $eskul = Ekstrakurikuler::findOrFail($eskul);
 
         if ($eskul->gambar && Storage::disk('public')->exists($eskul->gambar)) {
             Storage::disk('public')->delete($eskul->gambar);

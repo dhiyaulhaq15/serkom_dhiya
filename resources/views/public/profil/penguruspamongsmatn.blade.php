@@ -9,8 +9,6 @@
                     Misi</a>
                 <a href="{{ route('public.profil.penguruspamongsmatn') }}"
                     class="hover:text-blue-600 whitespace-nowrap">Pengurus & Pamong</a>
-                <a href="#fasilitas" class="hover:text-blue-600 whitespace-nowrap">Fasilitas</a>
-                <a href="#prasasti" class="hover:text-blue-600 whitespace-nowrap">Prasasti</a>
             </div>
         </div>
     </div>
@@ -47,11 +45,11 @@
         </div>
     </section>
     <section class="">
-        <<div class="max-w-7xl mx-auto px-6 text-center" x-data="{ tab: 'pamong' }">
+        <<div class="max-w-7xl mx-auto px-6 mb-7 text-center" x-data="{ tab: 'pamong' }">
             <h2 class="text-xl md:text-4xl font-bold text-gray-800 mb-6">Pamong</h2>
 
             <!-- Tab Bar -->
-            <div class="flex flex-wrap justify-center gap-4 mb-8">
+            {{-- <div class="flex flex-wrap justify-center gap-4 mb-8">
                 <button @click="tab = 'p3'"
                     :class="tab === 'p3' ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-800'"
                     class="px-4 py-2 rounded-full font-medium transition hover:bg-blue-500 hover:text-white">
@@ -67,10 +65,10 @@
                     class="px-4 py-2 rounded-full font-medium transition hover:bg-blue-500 hover:text-white">
                     Pamong, Pengajar (P2)
                 </button>
-            </div>
+            </div> --}}
 
             <!-- Tab Content -->
-            <div class="flex flex-wrap justify-center gap-6" x-show="tab === 'p3'">
+            <div class="flex flex-wrap justify-center gap-6">
                 @for ($i = 0; $i < 8; $i++)
                     <div
                         class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition duration-300 w-72">
@@ -87,11 +85,11 @@
             </div>
 
             <!-- Placeholder for other tabs -->
-            <div x-show="tab === 'admin'" class="text-gray-600 text-lg mt-6">Konten Pamong Administrasi (PA) akan
+            {{-- <div x-show="tab === 'admin'" class="text-gray-600 text-lg mt-6">Konten Pamong Administrasi (PA) akan
                 ditampilkan di sini.</div>
             <div x-show="tab === 'pengajar2'" class="text-gray-600 text-lg mt-6">Konten Pamong Pengajar (P2) akan
                 ditampilkan di sini.</div>
-            </div>
+            </div> --}}
 
             </div>
 

@@ -9,8 +9,6 @@
                     Misi</a>
                 <a href="{{ route('public.profil.penguruspamongsmatn') }}"
                     class="hover:text-blue-600 whitespace-nowrap">Pengurus & Pamong</a>
-                <a href="#fasilitas" class="hover:text-blue-600 whitespace-nowrap">Fasilitas</a>
-                <a href="#prasasti" class="hover:text-blue-600 whitespace-nowrap">Prasasti</a>
             </div>
         </div>
     </div>

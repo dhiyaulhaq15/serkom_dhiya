@@ -23,6 +23,7 @@
             <a href="{{ route('admin.users.index') }}" class="block py-2.5 px-6 mx-3 rounded-xl hover:bg-blue-500 hover:text-white transition"><i class="ri-user-line mr-3"></i>Users</a>
             <a href="#" class="block py-2.5 px-6 mx-3 rounded-xl hover:bg-blue-500 hover:text-white transition"><i class="ri-presentation-line mr-3"></i>Guru</a>
             <a href="#" class="block py-2.5 px-6 mx-3 rounded-xl hover:bg-blue-500 hover:text-white transition"><i class="ri-graduation-cap-line mr-3"></i>Siswa</a>
+            <a href="{{ route('admin.prestasi.index') }}" class="block py-2.5 px-6 mx-3 rounded-xl hover:bg-blue-500 hover:text-white transition"><i class="ri-graduation-cap-line mr-3"></i>Prestasi</a>
             <a href="{{ route('admin.eventnews.index') }}" class="block py-2.5 px-6 mx-3 rounded-xl hover:bg-blue-500 hover:text-white transition"><i class="ri-news-line mr-3"></i>News</a>
             <a href="{{ route('admin.videogallery.index') }}" class="block py-2.5 px-6 mx-3 rounded-xl hover:bg-blue-500 hover:text-white transition"><i class="ri-video-line mr-3"></i>Video Gallery</a>
             <a href="{{ route('admin.ekstrakurikuler.index') }}" class="block py-2.5 px-6 mx-3 rounded-xl hover:bg-blue-500 hover:text-white transition"><i class="ri-team-line mr-3"></i>Ekstrakurikuler</a>

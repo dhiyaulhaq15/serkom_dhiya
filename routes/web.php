@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Ekstrakurikuler;
 use App\Http\Controllers\EkstrakurikulerController;
 use App\Http\Controllers\EventNewsController;
+use App\Http\Controllers\PrestasiController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicController;
@@ -22,7 +23,7 @@ Route::post('/login', [AuthContoroller::class, 'login'])->name('login.post');
 
 Route::get('/logout', [AuthContoroller::class, 'logout'])->name('logout');
 
-Route::middleware('auth')->group(function(){
+Route::middleware('auth')->group(function () {
     Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::get('/operator/dashboard', fn() => view('operator.dashboard'))->name('operator.dashboard');
     Route::get('/guru/dashboard', fn() => view('guru.dashboard'))->name('guru.dashboard');
@@ -30,6 +31,10 @@ Route::middleware('auth')->group(function(){
 });
 
 Route::get('/public/page-sma-tn', [PublicController::class, 'page'])->name('public.pagesmatn');
+Route::get('/public/galerivideo-sma-tn', [PublicController::class, 'galerivideo'])->name('public.galerivideosmatn');
+Route::get('/public/prestasi-sma-tn', [PublicController::class, 'prestasis'])->name('public.prestasismatn');
+Route::get('/public/eskul-sma-tn', [PublicController::class, 'eskul'])->name('public.eskulsmatn');
+Route::get('/public/organisasi-sma-tn', [PublicController::class, 'organisasi'])->name('public.organisasismatn');
 Route::get('/public/profil/sejarah-sma-tn', [PublicController::class, 'sejarah'])->name('public.profil.sejarahsmatn');
 Route::get('/public/profil/visimisi-sma-tn', [PublicController::class, 'visimisi'])->name('public.profil.visimisismatn');
 Route::get('/public/profil/lambang-sma-tn', [PublicController::class, 'lambang'])->name('public.profil.lambangsmatn');
@@ -46,14 +51,29 @@ Route::delete('/users/{id}', [AdminController::class, 'destroy'])->name('users.d
 Route::get('/ekstrakurikuler', [EkstrakurikulerController::class, 'index'])->name('admin.ekstrakurikuler.index');
 Route::get('/ekstrakurikuler/create', [EkstrakurikulerController::class, 'create'])->name('admin.ekstrakurikuler.create');
 Route::post('/eskul/store', [EkstrakurikulerController::class, 'store'])->name('admin.ekstrakurikuler.store');
-Route::get('/admin/ekstrakurikuler/{id}/edit', [EkstrakurikulerController::class, 'edit'])->name('admin.ekstrakurikuler.edit');
-Route::put('/admin/ekstrakurikuler/{id}', [EkstrakurikulerController::class, 'update'])->name('admin.ekstrakurikuler.update');
-Route::delete('/admin/ekstrakurikuler/{id}', [EkstrakurikulerController::class, 'destroy'])->name('admin.ekstrakurikuler.destroy');
+Route::get('/admin/ekstrakurikuler/{eskul}/edit', [EkstrakurikulerController::class, 'edit'])->name('admin.ekstrakurikuler.edit');
+Route::put('/admin/ekstrakurikuler/{eskul}', [EkstrakurikulerController::class, 'update'])->name('admin.ekstrakurikuler.update');
+Route::delete('/admin/ekstrakurikuler/{eskul}', [EkstrakurikulerController::class, 'destroy'])->name('admin.ekstrakurikuler.destroy');
 
 Route::get('/admin/eventnews/index', [EventNewsController::class, 'index'])->name('admin.eventnews.index');
 Route::get('/admin/eventnews/create', [EventNewsController::class, 'create'])->name('admin.eventnews.create');
 Route::post('/admin/news', [EventNewsController::class, 'store'])->name('admin.eventnews.store');
+// Route::get('/admin/eventnews/{eventsnews}/edit', [EventNewsController::class, 'edit'])->name('admin.eventnews.edit');
+// Route::put('/admin/eventnews/{eventsnews}', [EventNewsController::class, 'update'])->name('admin.eventnews.update');
+// Route::delete('/admin/eventnews/{eventsnews}', [EventNewsController::class, 'destroy'])->name('admin.eventnews.destroy');
+Route::get('/admin/eventnews/edit/{id}', [EventNewsController::class, 'edit'])->name('admin.eventnews.edit');
+Route::put('/admin/eventnews/{eventsnews}', [EventNewsController::class, 'update'])->name('admin.eventnews.update');
+Route::delete('/admin/eventnews/{eventsnews}', [EventNewsController::class, 'destroy'])->name('admin.eventnews.destroy');
+
+
 
 Route::get('/admin/videogallery/index', [VideoGalleryController::class, 'index'])->name('admin.videogallery.index');
 Route::get('/admin/videogallery/create', [VideoGalleryController::class, 'create'])->name('admin.videogallery.create');
 Route::post('/admin/videogallery', [VideoGalleryController::class, 'store'])->name('admin.videogallery.store');
+
+Route::get('/admin/prestasi/index', [PrestasiController::class, 'index'])->name('admin.prestasi.index');
+Route::get('/admin/prestasi/create', [PrestasiController::class, 'create'])->name('admin.prestasi.create');
+Route::post('/admin/prestasi/store', [PrestasiController::class, 'store'])->name('admin.prestasi.store');
+Route::get('/admin/prestasi/{prestasi}/edit', [PrestasiController::class, 'edit'])->name('admin.prestasi.edit');
+Route::put('/admin/prestasi/{prestasi}', [PrestasiController::class, 'update'])->name('admin.prestasi.update');
+Route::delete('/admin/prestasi/{prestasi}', [PrestasiController::class, 'destroy'])->name('admin.prestasi.destroy');

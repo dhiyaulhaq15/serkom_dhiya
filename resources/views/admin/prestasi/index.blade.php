@@ -11,7 +11,7 @@
         </header>
         {{-- <div class="max-w-screen mx-auto mt-4 px-4 py-6"> --}}
         <div class="flex justify-between items-center mb-4 mt-4">
-            <a href="{{ route('admin.eventnews.create') }}"
+            <a href="{{ route('admin.prestasi.create') }}"
                 class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg shadow text-sm font-semibold">
                 + Tambah
             </a>
@@ -22,30 +22,24 @@
                     <tr>
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">#</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Gambar</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Title</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Content</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Aksi</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200">
-                    @foreach ($eventsnews as $eventnews)
+                    @foreach ($prestasis as $item)
                         <tr>
                             <td class="px-6 py-4 text-sm text-gray-700">{{ $loop->iteration }}</td>
                             <td class="px-6 py-4 text-sm text-gray-700">
-                                <img src="{{ asset('storage/' . $eventnews->gambar) }}" alt="Gambar Eskul"
+                                <img src="{{ asset('storage/' . $item->image) }}" alt="Gambar Eskul"
                                     class="w-20 h-14 object-cover rounded-md">
                             </td>
-                            <td class="px-6 py-4 text-sm text-gray-700">{{ $eventnews->title }}</td>
-                            <td class="px-6 py-4 text-sm text-gray-700">{{ $eventnews->content }}</td>
-                            <td class="px-6 py-4 text-sm text-gray-700">{{ $eventnews->user_id }}</td>
                             <td class="px-6 py-4 text-sm text-gray-700">
                                 <div class="flex items-center space-x-2">
-                                    <a href="{{ route('admin.eventnews.edit', $eventnews->id) }}"
-                                        class="inline-block px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600">
+                                    <a href="{{ route('admin.prestasi.edit', $item->id) }}" class="inline-block px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600">
                                         Edit
                                     </a>
 
-                                    <form action="{{ route('admin.eventnews.destroy', $eventnews->id) }}" method="POST"
+                                    <form action="{{ route('admin.prestasi.destroy', $item->id) }}" method="POST"
                                         onsubmit="return confirm('Yakin ingin menghapus data ini?')">
                                         @csrf
                                         @method('DELETE')

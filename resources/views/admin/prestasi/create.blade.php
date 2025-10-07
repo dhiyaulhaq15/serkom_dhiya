@@ -1,6 +1,4 @@
 @extends('admin.layout')
-@section('title', 'Tambah Pengguna')
-
 @section('content')
     <div class="h-20 w-full">
         <header class="flex items-center justify-between bg-white p-5 shadow-md rounded-2xl p-4 mt-4">
@@ -13,7 +11,7 @@
         <div class="max-w-2xl mx-auto py-10 px-6">
             <div class="bg-white shadow-lg rounded-2xl p-8 border border-gray-100">
                 <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">
-                    <i class="fa-solid fa-newspaper text-blue-600 mr-2"></i>Tambah Event / Berita
+                    <i class="fa-solid fa-trophy text-yellow-500 mr-2"></i>Upload Prestasi Baru
                 </h2>
 
                 {{-- Notifikasi sukses --}}
@@ -34,38 +32,19 @@
                     </div>
                 @endif
 
-                {{-- Form Tambah Event / News --}}
-                <form action="{{ route('admin.eventnews.store') }}" method="POST" enctype="multipart/form-data"
+                {{-- Form Upload --}}
+                <form action="{{ route('admin.prestasi.store') }}" method="POST" enctype="multipart/form-data"
                     class="space-y-6">
                     @csrf
 
-                    {{-- Judul --}}
+                    {{-- File Upload --}}
                     <div>
-                        <label for="title" class="block text-sm font-semibold text-gray-700 mb-1">Judul</label>
-                        <input type="text" name="title" id="title" value="{{ old('title') }}"
-                            class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out"
-                            placeholder="Masukkan judul event atau berita">
-                        @error('title')
-                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                        @enderror
-                    </div>
+                        <label for="image" class="block text-sm font-semibold text-gray-700 mb-2">
+                            Upload Gambar Prestasi
+                        </label>
 
-                    {{-- Konten --}}
-                    <div>
-                        <label for="content" class="block text-sm font-semibold text-gray-700 mb-1">Konten</label>
-                        <textarea name="content" id="content" rows="5"
-                            class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out"
-                            placeholder="Tulis isi berita atau deskripsi event di sini...">{{ old('content') }}</textarea>
-                        @error('content')
-                            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                        @enderror
-                    </div>
-
-                    {{-- Gambar --}}
-                    <div>
-                        <label for="gambar" class="block text-sm font-semibold text-gray-700 mb-2">Upload Gambar</label>
                         <div class="flex items-center justify-center w-full">
-                            <label for="gambar"
+                            <label for="image"
                                 class="flex flex-col items-center justify-center w-full h-40 border-2 border-dashed rounded-xl cursor-pointer bg-gray-50 hover:bg-gray-100 transition">
                                 <div class="flex flex-col items-center justify-center pt-5 pb-6 text-gray-600">
                                     <i class="fa-solid fa-cloud-arrow-up text-4xl mb-3 text-blue-600"></i>
@@ -73,24 +52,25 @@
                                         seret ke sini</p>
                                     <p class="text-xs text-gray-500">PNG, JPG, JPEG (max 2MB)</p>
                                 </div>
-                                <input id="gambar" type="file" name="gambar" class="hidden" required>
+                                <input id="image" type="file" name="image" class="hidden" required>
                             </label>
                         </div>
-                        @error('gambar')
+
+                        @error('image')
                             <p class="text-red-500 text-sm mt-2">{{ $message }}</p>
                         @enderror
                     </div>
 
                     {{-- Tombol Aksi --}}
                     <div class="flex justify-between items-center pt-4">
-                        <a href="{{ route('admin.eventnews.index') }}"
+                        <a href="{{ route('admin.prestasi.index') }}"
                             class="inline-flex items-center text-gray-600 hover:text-gray-800 transition font-medium">
                             <i class="fa-solid fa-arrow-left mr-2"></i>Kembali
                         </a>
 
                         <button type="submit"
                             class="inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2.5 rounded-lg shadow transition duration-200 ease-in-out">
-                            <i class="fa-solid fa-save mr-2"></i>Simpan
+                            <i class="fa-solid fa-upload mr-2"></i>Upload
                         </button>
                     </div>
                 </form>

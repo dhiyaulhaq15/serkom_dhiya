@@ -31,12 +31,12 @@
                 <div class="flex flex-col items-center" x-data="{ count: 0 }" x-init="let i = setInterval(() => { count++; if (count >= 450) clearInterval(i) }, 10)">
                     <i class="ri-user-star-line text-4xl text-blue-600 mb-3"></i>
                     <h3 class="text-4xl font-bold text-gray-800" x-text="count"></h3>
-                    <p class="text-sm text-gray-500">Alumni Sukses</p>
+                    <p class="text-sm text-gray-500">Jumlah Siswa</p>
                 </div>
                 <div class="flex flex-col items-center" x-data="{ count: 0 }" x-init="let i = setInterval(() => { count++; if (count >= 99) clearInterval(i) }, 20)">
                     <i class="ri-award-line text-4xl text-green-600 mb-3"></i>
-                    <h3 class="text-4xl font-bold text-gray-800" x-text="count + '%'"></h3>
-                    <p class="text-sm text-gray-500">Kelulusan</p>
+                    <h3 class="text-4xl font-bold text-gray-800" x-text="count"></h3>
+                    <p class="text-sm text-gray-500">Jumlah Guru</p>
                 </div>
                 <div class="flex flex-col items-center" x-data="{ count: 0 }" x-init="let i = setInterval(() => { count++; if (count >= 8) clearInterval(i) }, 200)">
                     <i class="ri-bar-chart-line text-4xl text-yellow-500 mb-3"></i>
@@ -109,11 +109,10 @@
     <section class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-6 text-center justify-center">
             <h2 class="text-3xl md:text-4xl font-bold text-blue-800 mb-10">Prestasi</h2>
-            <div class="flex gap-5">
-                <img class="rounded-2xl w-[300px]" src="{{ asset('images/prestasi1.jpeg') }}" alt="">
-                <img class="rounded-2xl w-[300px]" src="{{ asset('images/prestasi1.jpeg') }}" alt="">
-                <img class="rounded-2xl w-[300px]" src="{{ asset('images/prestasi1.jpeg') }}" alt="">
-                <img class="rounded-2xl w-[300px]" src="{{ asset('images/prestasi1.jpeg') }}" alt="">
+            <div class="flex gap-5 items-center">
+                @foreach ($prestasis as $prestasi)
+                    <img class="rounded-2xl w-[400px] h-[400px] object-contain" src="{{ asset('storage/' . $prestasi->image) }}" alt="">
+                @endforeach
             </div>
         </div>
     </section>
@@ -122,102 +121,52 @@
     <section class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-6 text-center">
             <h2 class="text-3xl md:text-4xl font-bold text-blue-800">Kurikulum Khusus</h2>
-            {{-- <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Membentuk karakter tangguh, wawasan kebangsaan, keterampilan
-                proyek, dan kemandirian kreatif siswa.</p> --}}
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
-                <!-- Card -->
-                <div class="bg-white rounded-xl shadow hover:shadow-xl transition overflow-hidden">
-                    <img src="{{ asset('images/belanegara.jpg') }}" class="h-44 w-full object-cover">
-                    <div class="p-5 text-left">
-                        <h3 class="text-lg font-semibold text-gray-800">Bela Negara</h3>
-                        <p class="text-sm text-gray-600 mt-2">Semangat nasionalisme, disiplin, dan tanggung jawab
-                            melalui pelatihan kepemimpinan.</p>
+                @foreach (range(1, 4) as $i)
+                    <div class="bg-white rounded-xl shadow hover:shadow-xl transition overflow-hidden">
+                        <img src="{{ asset('images/belanegara.jpg') }}" class="h-44 w-full object-cover">
+                        <div class="p-5 text-left">
+                            <h3 class="text-lg font-semibold text-gray-800">Bela Negara</h3>
+                            <p class="text-sm text-gray-600 mt-2">Semangat nasionalisme, disiplin, dan tanggung jawab
+                                melalui pelatihan kepemimpinan.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="bg-white rounded-xl shadow hover:shadow-xl transition overflow-hidden">
-                    <img src="{{ asset('images/belanegara.jpg') }}" class="h-44 w-full object-cover">
-                    <div class="p-5 text-left">
-                        <h3 class="text-lg font-semibold text-gray-800">Bela Negara</h3>
-                        <p class="text-sm text-gray-600 mt-2">Semangat nasionalisme, disiplin, dan tanggung jawab
-                            melalui pelatihan kepemimpinan.</p>
-                    </div>
-                </div>
-                <div class="bg-white rounded-xl shadow hover:shadow-xl transition overflow-hidden">
-                    <img src="{{ asset('images/belanegara.jpg') }}" class="h-44 w-full object-cover">
-                    <div class="p-5 text-left">
-                        <h3 class="text-lg font-semibold text-gray-800">Bela Negara</h3>
-                        <p class="text-sm text-gray-600 mt-2">Semangat nasionalisme, disiplin, dan tanggung jawab
-                            melalui pelatihan kepemimpinan.</p>
-                    </div>
-                </div>
-                <div class="bg-white rounded-xl shadow hover:shadow-xl transition overflow-hidden">
-                    <img src="{{ asset('images/belanegara.jpg') }}" class="h-44 w-full object-cover">
-                    <div class="p-5 text-left">
-                        <h3 class="text-lg font-semibold text-gray-800">Bela Negara</h3>
-                        <p class="text-sm text-gray-600 mt-2">Semangat nasionalisme, disiplin, dan tanggung jawab
-                            melalui pelatihan kepemimpinan.</p>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
 
-    <section class="py-20 bg-gray-50">
+    <section class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-6 text-center">
             <h2 class="text-3xl md:text-4xl font-bold text-blue-800">Ekstrakurikuler</h2>
-            {{-- <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Membentuk karakter tangguh, wawasan kebangsaan, keterampilan
-                proyek, dan kemandirian kreatif siswa.</p> --}}
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
-                {{-- <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mb-12">
-                    @foreach ($ekstrakurikulers as $eskul)
-                        <div class="bg-white rounded-xl shadow hover:shadow-xl transition overflow-hidden">
-                            <img src="{{ asset($eskul->image) }}" class="h-44 w-full object-cover">
-                            <div class="p-5 text-left">
-                                <div class="flex items-center mb-3">
-                                    <h3 class="text-lg font-semibold text-gray-800">{{ $eskul->title }}</h3>
-                                </div>
-                                <p class="text-sm text-gray-600 mb-4">
-                                    {{ Str::limit($eskul->description, 100) }}
-                                </p>
-                                <a href="{{ url('/eskul/' . $eskul->slug) }}"
-                                    class="inline-block px-4 py-2 text-sm bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
-                                    Lihat Selengkapnya
-                                </a>
-                            </div>
+            {{-- <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
+                @foreach (range(1, 3) as $i)
+                    <div class="bg-gray-50 rounded-xl shadow hover:shadow-xl transition overflow-hidden">
+                        <img src="{{ asset('images/belanegara.jpg') }}" class="h-44 w-full object-cover">
+                        <div class="p-5 text-left">
+                            <h3 class="text-lg font-semibold text-gray-800">Bela Negara</h3>
+                            <p class="text-sm text-gray-600 mt-2">Semangat nasionalisme, disiplin, dan tanggung jawab
+                                melalui pelatihan kepemimpinan.</p>
                         </div>
-                    @endforeach
-                </div> --}}
-
-
-                <div class="bg-white rounded-xl shadow hover:shadow-xl transition overflow-hidden">
-                    <img src="{{ asset('images/belanegara.jpg') }}" class="h-44 w-full object-cover">
-                    <div class="p-5 text-left">
-                        <h3 class="text-lg font-semibold text-gray-800">Bela Negara</h3>
-                        <p class="text-sm text-gray-600 mt-2">Semangat nasionalisme, disiplin, dan tanggung jawab
-                            melalui pelatihan kepemimpinan.</p>
                     </div>
-                </div>
-                <div class="bg-white rounded-xl shadow hover:shadow-xl transition overflow-hidden">
-                    <img src="{{ asset('images/belanegara.jpg') }}" class="h-44 w-full object-cover">
-                    <div class="p-5 text-left">
-                        <h3 class="text-lg font-semibold text-gray-800">Bela Negara</h3>
-                        <p class="text-sm text-gray-600 mt-2">Semangat nasionalisme, disiplin, dan tanggung jawab
-                            melalui pelatihan kepemimpinan.</p>
+                @endforeach
+            </div> --}}
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
+                @foreach ($eskuls as $eskul)
+                    <div class="bg-gray-50 rounded-xl shadow hover:shadow-xl transition overflow-hidden">
+                        <img src="{{ asset('storage/' . $eskul->gambar) }}" class="h-44 w-full object-cover">
+                        <div class="p-5 text-left">
+                            <h3 class="text-lg font-semibold text-gray-800">{{ $eskul->nama }}</h3>
+                            <p class="text-sm text-gray-600 mt-2">{{ $eskul->deskripsi }}</p>
+                        </div>
                     </div>
-                </div>
-                <div class="bg-white rounded-xl shadow hover:shadow-xl transition overflow-hidden">
-                    <img src="{{ asset('images/belanegara.jpg') }}" class="h-44 w-full object-cover">
-                    <div class="p-5 text-left">
-                        <h3 class="text-lg font-semibold text-gray-800">Bela Negara</h3>
-                        <p class="text-sm text-gray-600 mt-2">Semangat nasionalisme, disiplin, dan tanggung jawab
-                            melalui pelatihan kepemimpinan.</p>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
 
-    <section class="bg-white py-20 px-6 md:px-20">
+
+    <section class="bg-gray-50 py-20">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-bold text-blue-800">Galeri Video</h2>
@@ -242,7 +191,7 @@
                         preg_match(
                             '/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/',
                             $video->youtube_link,
-                            $matches
+                            $matches,
                         );
                         $videoId = $matches[1] ?? null;
                     @endphp
@@ -261,7 +210,7 @@
 
 
             <div class="text-center">
-                <a href="https://www.youtube.com/@kasektncimahi" target="_blank"
+                <a href="{{ route('public.galerivideosmatn') }}" target="_blank"
                     class="inline-block px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition">
                     Lihat Selengkapnya
                 </a>

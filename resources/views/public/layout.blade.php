@@ -18,7 +18,8 @@
         <nav x-data="{ scrolled: false }" x-init="window.addEventListener('scroll', () => scrolled = window.scrollY > 20)" :class="scrolled ? 'bg-white shadow-md' : 'bg-transparent'"
             class="fixed top-0 left-0 w-full z-50 transition duration-300">
             <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
-                <a href="{{ route('public.pagesmatn') }}" class="flex items-center space-x-3 hover:opacity-80 transition">
+                <a href="{{ route('public.pagesmatn') }}"
+                    class="flex items-center space-x-3 hover:opacity-80 transition">
                     <img src="{{ asset('images/LOGO-SMA-TARUNA-NUSANTARA-1.png') }}" class="w-12 h-12"
                         alt="Logo SMA TN">
                     <div class="border-l-2 border-gray-300 pl-3">
@@ -28,7 +29,6 @@
                 </a>
 
                 <div class="hidden md:flex space-x-8 font-medium">
-                    <a href="#" class="hover:text-blue-600">LPTTN</a>
                     <div x-data="{ open: false }" class="relative">
                         <button @click="open = !open"
                             class="flex items-center space-x-1 hover:text-blue-600 focus:outline-none">
@@ -39,8 +39,8 @@
                             class="absolute left-0 mt-7 w-40 bg-white rounded-sm shadow-lg border border-gray-200 z-50">
                             <a href="{{ route('public.profil.sejarahsmatn') }}"
                                 class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600">Profil</a>
-                            <a href="{{ url('/kurikulum') }}"
-                                class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600">Kurikulum</a>
+                            <a href="{{ route('public.galerivideosmatn') }}"
+                                class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600">Galeri Video</a>
                         </div>
                     </div>
                     <div x-data="{ open: false }" class="relative">
@@ -51,14 +51,11 @@
                         </button>
                         <div x-show="open" @click.away="open = false" x-transition
                             class="absolute left-0 mt-7 w-60 bg-white rounded-sm shadow-lg border border-gray-200 z-50">
-                            <a href="{{ url('/profil') }}"
-                                class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600">Informasi
-                                Perdupsis</a>
-                            <a href="{{ url('/kurikulum') }}"
+                            <a href="{{ route('public.prestasismatn') }}"
                                 class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600">Prestasi</a>
-                            <a href="{{ url('/kurikulum') }}"
+                            <a href="{{ route('public.organisasismatn') }}"
                                 class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600">Organisasi</a>
-                            <a href="{{ url('/kurikulum') }}"
+                            <a href="{{ route('public.eskulsmatn') }}"
                                 class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600">Ekstrakurikuler</a>
                         </div>
                     </div>
@@ -80,36 +77,79 @@
                 </div>
             </div>
         </div> --}}
-        <footer class="bg-blue-900 text-gray-200 py-10 mt-20">
-            <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-8">
+        <footer class="bg-blue-900 text-gray-200 pt-12 pb-8 relative overflow-hidden">
+            <!-- Wave Decoration -->
+            <div class="absolute top-0 left-0 w-full overflow-hidden leading-none rotate-180">
+                <svg viewBox="0 0 1200 120" preserveAspectRatio="none" class="relative block w-full h-12">
+                    <path
+                        d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.64-17.28-168.09-16.17-250.79,3.6C406.69,37.75,324.34,84.4,242.05,106.5,162.47,127.51,81.38,124.93,0,103.29V120H1200V0C1118.57,29.26,1044.65,113.6,985.66,92.83Z"
+                        class="fill-blue-900"></path>
+                </svg>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-10 relative z-10">
+                <!-- Identitas Sekolah -->
                 <div>
-                    <h3 class="font-bold text-lg mb-3">SMA Taruna Nusantara</h3>
-                    <p class="text-sm">Jl. Raya SMA TN No.1, Magelang, Jawa Tengah</p>
-                    <p class="text-sm mt-2">Email: info@smatn.sch.id</p>
-                    <p class="text-sm">Telepon: (0293) 123456</p>
+                    <h3 class="font-extrabold text-2xl mb-3 text-white">SMA Taruna Nusantara</h3>
+                    <p class="text-sm leading-relaxed text-gray-300">
+                        Lembaga pendidikan unggulan berasrama yang membentuk generasi muda berjiwa
+                        nasionalis, disiplin, dan berwawasan global.
+                    </p>
+                    <div class="mt-4 space-y-1 text-sm">
+                        <p><i class="ri-map-pin-2-line mr-1 text-blue-400"></i>Jl. Raya SMA TN No.1, Magelang, Jawa
+                            Tengah</p>
+                        <p><i class="ri-mail-line mr-1 text-blue-400"></i>info@smatn.sch.id</p>
+                        <p><i class="ri-phone-line mr-1 text-blue-400"></i>(0293) 123456</p>
+                    </div>
                 </div>
+
+                <!-- Navigasi -->
                 <div>
-                    <h3 class="font-bold text-lg mb-3">Navigasi</h3>
+                    <h3 class="font-semibold text-lg mb-4 text-white">Navigasi</h3>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="hover:text-white">Tentang</a></li>
-                        <li><a href="#" class="hover:text-white">Pendaftaran</a></li>
-                        <li><a href="#" class="hover:text-white">Kurikulum</a></li>
-                        <li><a href="#" class="hover:text-white">Kontak</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition">Beranda</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition">Tentang Kami</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition">Pendaftaran</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition">Kurikulum</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition">Galeri</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition">Kontak</a></li>
                     </ul>
                 </div>
+
+                <!-- Ekstrakurikuler -->
                 <div>
-                    <h3 class="font-bold text-lg mb-3">Ikuti Kami</h3>
-                    <div class="flex space-x-4 text-xl">
-                        <a href="#" class="hover:text-white"><i class="ri-facebook-fill"></i></a>
-                        <a href="#" class="hover:text-white"><i class="ri-instagram-line"></i></a>
-                        <a href="#" class="hover:text-white"><i class="ri-youtube-line"></i></a>
+                    <h3 class="font-semibold text-lg mb-4 text-white">Ekstrakurikuler</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-blue-400 transition">Paskibra</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition">Drumband</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition">Basket</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition">Karate</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition">Paduan Suara</a></li>
+                    </ul>
+                </div>
+
+                <!-- Map Section -->
+                <div>
+                    <h3 class="font-semibold text-lg mb-4 text-white">Lokasi Kami</h3>
+                    <div class="rounded-lg overflow-hidden shadow-lg border border-blue-700">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d31688.293142039252!2d107.52052201619234!3d-6.88621445299366!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1ssma%20taruna%20nusantara%20cimahi!5e0!3m2!1sid!2sid!4v1759768415099!5m2!1sid!2sid">
+                        </iframe>
                     </div>
                 </div>
             </div>
-            <div class="text-center text-xs mt-8 text-gray-400">
-                © 2025 SMA Taruna Nusantara. All rights reserved.
+
+            <div class="border-t border-blue-800 mt-10 pt-6 text-center text-sm text-gray-400">
+                <div class="flex justify-center space-x-5 mb-3">
+                    <a href="#" class="hover:text-blue-400 text-xl"><i class="ri-facebook-fill"></i></a>
+                    <a href="#" class="hover:text-blue-400 text-xl"><i class="ri-instagram-line"></i></a>
+                    <a href="#" class="hover:text-blue-400 text-xl"><i class="ri-youtube-line"></i></a>
+                    <a href="#" class="hover:text-blue-400 text-xl"><i class="ri-twitter-x-line"></i></a>
+                </div>
+                <p>© 2025 SMA Taruna Nusantara. All rights reserved.</p>
             </div>
         </footer>
+
         @yield('content')
     </body>
 

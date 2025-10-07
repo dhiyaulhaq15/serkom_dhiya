@@ -10,8 +10,23 @@
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                @for ($i = 0; $i < 6; $i++)
+                {{-- @for ($i = 0; $i < 6; $i++) --}}
+                @foreach ($eventsnews as $eventnews)
                     <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition duration-300 overflow-hidden">
+                        <img src="{{ asset('storage/' . $eventnews->gambar) }}" alt="Event Image" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-lg font-bold text-gray-800 mb-2 truncate">{{ $eventnews->title }}</h3>
+                            <p class="text-sm text-gray-500 mb-4">{{ $eventnews->created_at->format('d M Y') }}</p>
+                            <p class="text-gray-600 text-sm leading-relaxed line-clamp-3">
+                                {{ Str::limit($eventnews->content, 100, '...') }}
+                            </p>
+                            <a href="#"
+                                class="inline-block mt-4 text-blue-600 hover:underline text-sm font-medium">Baca
+                                Selengkapnya →</a>
+                        </div>
+                    </div>
+                @endforeach
+                    {{-- <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition duration-300 overflow-hidden">
                         <img src="{{ asset('images/padus.jpg') }}" alt="Event Image" class="w-full h-48 object-cover">
                         <div class="p-6">
                             <h3 class="text-lg font-bold text-gray-800 mb-2 truncate">Upacara Hari Kesaktian Pancasila
@@ -26,7 +41,7 @@
                                 Selengkapnya →</a>
                         </div>
                     </div>
-                @endfor
+                @endfor --}}
             </div>
         </div>
     </section>

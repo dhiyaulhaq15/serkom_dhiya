@@ -3,17 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ekstrakurikuler;
+use App\Models\EventsNews;
+use App\Models\Prestasi;
 use App\Models\VideoGallery;
+use Illuminate\Console\Scheduling\Event;
 use Illuminate\Http\Request;
 
 class PublicController extends Controller
 {
     public function page()
     {
-        $eskul = Ekstrakurikuler::all();
+        // $eskul = Ekstrakurikuler::all();
         $video_galleries = VideoGallery::latest()->get();
-        $ekstrakurikulers = Ekstrakurikuler::latest()->get();
-        return view('public.pagesmatn', compact('eskul', 'video_galleries', 'ekstrakurikulers'));
+        $eskuls = Ekstrakurikuler::latest()->get();
+        $prestasis = Prestasi::latest()->get();
+        return view('public.pagesmatn', compact( 'video_galleries', 'eskuls', 'prestasis'));
     }
 
     public function sejarah()
@@ -38,6 +42,30 @@ class PublicController extends Controller
 
     public function eventnews()
     {
-        return view('public.event&newssmatn');
+        $eventsnews = EventsNews::latest()->get();
+        return view('public.event&newssmatn', compact('eventsnews'));
+    }
+
+    public function galerivideo()
+    {
+        $video_galleries = VideoGallery::latest()->get();
+        return view('public.galerivideosmatn', compact('video_galleries'));
+    }
+
+    public function prestasis()
+    {
+        $prestasis = Prestasi::latest()->get();
+        return view('public.prestasismatn', compact('prestasis'));
+    }
+
+    public function eskul()
+    {
+        $eskuls = Ekstrakurikuler::latest()->get();
+        return view('public.eskulsmatn', compact('eskuls'));
+    }
+
+    public function organisasi()
+    {
+        return view('public.organisasismatn');
     }
 }
