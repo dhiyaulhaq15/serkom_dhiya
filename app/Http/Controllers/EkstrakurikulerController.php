@@ -64,7 +64,7 @@ class EkstrakurikulerController extends Controller
 
         $eskul = Ekstrakurikuler::findOrFail($eskul);
 
-        $filename = $eskul->gambar; // default: gambar lama
+        $filename = $eskul->gambar;
 
         // if ($request->hasFile('gambar')) {
         //     $originalName = $request->file('gambar')->getClientOriginalName();

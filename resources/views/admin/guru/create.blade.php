@@ -4,7 +4,7 @@
 @section('content')
 <div class="h-20 w-full">
     <header class="flex items-center justify-between bg-white p-5 shadow-md rounded-2xl p-4 mt-4">
-        <h1 class="text-xl font-bold">Manajemen Data Guru</h1>
+        <h1 class="text-xl font-bold">Daftar Guru</h1>
         <div class="flex items-center bg-gray-100 rounded-xl px-4 py-2">
             <input type="text" placeholder="Search" class="bg-transparent ml-2 focus:outline-none">
             <i class="ri-search-line"></i>
@@ -14,7 +14,7 @@
     <div class="max-w-2xl mx-auto py-10 px-6">
         <div class="bg-white shadow-lg rounded-2xl p-8 border border-gray-100">
             <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">
-                <i class="fa-solid fa-user-tie text-blue-600 mr-2"></i>Tambah Data Guru
+                <i class="fa-solid fa-user-tie text-blue-600 mr-2"></i>Tambah Guru
             </h2>
 
             {{-- Notifikasi sukses --}}
@@ -41,10 +41,12 @@
 
                 {{-- NIP --}}
                 <div>
-                    <label for="nip" class="block text-sm font-semibold text-gray-700 mb-1">NIP</label>
-                    <input type="text" name="nip" id="nip" value="{{ old('nip') }}"
-                        class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out"
-                        placeholder="Masukkan NIP guru">
+                    <label class="block text-sm font-semibold text-gray-700 mb-1">NIP</label>
+                    {{-- <input type="text" name="nip" value="{{ old('nip') }}"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"> --}}
+                    <input type="text" name="nip" value="{{ old('nip') }}"
+                        maxlength="8" pattern="\d{8}" title="NIP harus terdiri dari 8 digit angka"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                     @error('nip')
                         <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                     @enderror
@@ -52,10 +54,9 @@
 
                 {{-- Nama --}}
                 <div>
-                    <label for="nama" class="block text-sm font-semibold text-gray-700 mb-1">Nama</label>
-                    <input type="text" name="nama" id="nama" value="{{ old('nama') }}"
-                        class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out"
-                        placeholder="Masukkan nama guru">
+                    <label class="block text-sm font-semibold text-gray-700 mb-1">Nama Lengkap</label>
+                    <input type="text" name="nama" value="{{ old('nama') }}"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                     @error('nama')
                         <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                     @enderror
@@ -63,10 +64,9 @@
 
                 {{-- Mapel --}}
                 <div>
-                    <label for="mapel" class="block text-sm font-semibold text-gray-700 mb-1">Mata Pelajaran</label>
-                    <input type="text" name="mapel" id="mapel" value="{{ old('mapel') }}"
-                        class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out"
-                        placeholder="Masukkan mata pelajaran">
+                    <label class="block text-sm font-semibold text-gray-700 mb-1">Mata Pelajaran</label>
+                    <input type="text" name="mapel" value="{{ old('mapel') }}"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                     @error('mapel')
                         <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                     @enderror
@@ -74,10 +74,9 @@
 
                 {{-- Alamat --}}
                 <div>
-                    <label for="alamat" class="block text-sm font-semibold text-gray-700 mb-1">Alamat</label>
-                    <input type="text" name="alamat" id="alamat" value="{{ old('alamat') }}"
-                        class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out"
-                        placeholder="Masukkan alamat guru">
+                    <label class="block text-sm font-semibold text-gray-700 mb-1">Alamat</label>
+                    <textarea name="alamat" rows="3"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">{{ old('alamat') }}</textarea>
                     @error('alamat')
                         <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                     @enderror
@@ -85,18 +84,17 @@
 
                 {{-- No HP --}}
                 <div>
-                    <label for="no_hp" class="block text-sm font-semibold text-gray-700 mb-1">No. HP</label>
-                    <input type="text" name="no_hp" id="no_hp" value="{{ old('no_hp') }}"
-                        class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out"
-                        placeholder="Masukkan nomor HP guru">
+                    <label class="block text-sm font-semibold text-gray-700 mb-1">No. HP</label>
+                    <input type="text" name="no_hp" value="{{ old('no_hp') }}"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                     @error('no_hp')
                         <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                     @enderror
                 </div>
 
-                {{-- Tombol Aksi --}}
+                {{-- Tombol --}}
                 <div class="flex justify-between items-center pt-4">
-                    <a href="{{ route('admin.guru.index') }}"
+                    <a href="{{ route('guru.index') }}"
                         class="inline-flex items-center text-gray-600 hover:text-gray-800 transition font-medium">
                         <i class="fa-solid fa-arrow-left mr-2"></i>Kembali
                     </a>

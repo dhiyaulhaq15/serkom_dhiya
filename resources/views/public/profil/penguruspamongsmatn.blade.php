@@ -69,19 +69,18 @@
 
             <!-- Tab Content -->
             <div class="flex flex-wrap justify-center gap-6">
-                @for ($i = 0; $i < 8; $i++)
-                    <div
-                        class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition duration-300 w-72">
-                        <img src="{{ asset('images/sugionomenlu.jpg') }}" alt="Foto Dummy" class="w-full h-64 object-cover">
-                        <div class="p-5 text-center">
-                            <h3
-                                class="text-lg font-bold text-gray-800 whitespace-nowrap overflow-hidden text-ellipsis truncate">
-                                Brigjen TNI Drs. Untung Susoro, M.Si.
-                            </h3>
-                            <p class="text-gray-500 mt-1">2004 – 2006 / TN Magelang</p>
-                        </div>
+                @foreach ($guru as $g)
+                <div
+                    class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition duration-300 w-72">
+                    <img src="{{ asset('images/sugionomenlu.jpg') }}" alt="Foto Dummy" class="w-full h-64 object-cover">
+                    <div class="p-5 text-center">
+                        <p class="text-sm font-semibold text-gray-800 leading-snug">
+                            {{ $g->nama }} — <span
+                                class="text-gray-500">{{ $g->mapel }}</span>
+                        </p>
                     </div>
-                @endfor
+                </div>
+                @endforeach
             </div>
 
             <!-- Placeholder for other tabs -->

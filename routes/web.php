@@ -6,10 +6,12 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Ekstrakurikuler;
 use App\Http\Controllers\EkstrakurikulerController;
 use App\Http\Controllers\EventNewsController;
+use App\Http\Controllers\GuruController;
 use App\Http\Controllers\PrestasiController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicController;
+use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VideoGalleryController;
 use Illuminate\Support\Facades\Route;
@@ -33,6 +35,7 @@ Route::middleware('auth')->group(function () {
 Route::get('/public/page-sma-tn', [PublicController::class, 'page'])->name('public.pagesmatn');
 Route::get('/public/galerivideo-sma-tn', [PublicController::class, 'galerivideo'])->name('public.galerivideosmatn');
 Route::get('/public/prestasi-sma-tn', [PublicController::class, 'prestasis'])->name('public.prestasismatn');
+Route::get('/public/datasiswa-sma-tn', [PublicController::class, 'dataSiswa'])->name('public.dataSiswa');
 Route::get('/public/eskul-sma-tn', [PublicController::class, 'eskul'])->name('public.eskulsmatn');
 Route::get('/public/organisasi-sma-tn', [PublicController::class, 'organisasi'])->name('public.organisasismatn');
 Route::get('/public/profil/sejarah-sma-tn', [PublicController::class, 'sejarah'])->name('public.profil.sejarahsmatn');
@@ -77,3 +80,17 @@ Route::post('/admin/prestasi/store', [PrestasiController::class, 'store'])->name
 Route::get('/admin/prestasi/{prestasi}/edit', [PrestasiController::class, 'edit'])->name('admin.prestasi.edit');
 Route::put('/admin/prestasi/{prestasi}', [PrestasiController::class, 'update'])->name('admin.prestasi.update');
 Route::delete('/admin/prestasi/{prestasi}', [PrestasiController::class, 'destroy'])->name('admin.prestasi.destroy');
+
+Route::get('/guru/index', [GuruController::class, 'index'])->name('guru.index');
+// Route::post('/guru/store', [GuruController::class, 'store'])->name('guru.store');
+// Route::put('/guru/update/{id}', [GuruController::class, 'update'])->name('guru.update');
+// Route::delete('/guru/delete/{id}', [GuruController::class, 'destroy'])->name('guru.delete');
+Route::get('/siswa/index', [SiswaController::class, 'index'])->name('siswa.index');
+
+// Route::get('/guru/create', [GuruController::class, 'create'])->name('guru.create');
+// Route::post('/guru', [GuruController::class, 'store'])->name('guru.store');
+// Route::get('/guru/{guru}/edit', [GuruController::class, 'edit'])->name('guru.edit');
+// Route::put('/guru/{guru}', [GuruController::class, 'update'])->name('guru.update');
+// Route::delete('/guru/{guru}', [GuruController::class, 'destroy'])->name('guru.destroy');
+Route::resource('guru', GuruController::class);
+Route::resource('siswa', SiswaController::class);

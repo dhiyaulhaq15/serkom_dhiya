@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Ekstrakurikuler;
 use App\Models\EventsNews;
+use App\Models\Guru;
 use App\Models\Prestasi;
+use App\Models\Siswa;
 use App\Models\VideoGallery;
 use Illuminate\Console\Scheduling\Event;
 use Illuminate\Http\Request;
@@ -17,7 +19,9 @@ class PublicController extends Controller
         $video_galleries = VideoGallery::latest()->get();
         $eskuls = Ekstrakurikuler::latest()->get();
         $prestasis = Prestasi::latest()->get();
-        return view('public.pagesmatn', compact( 'video_galleries', 'eskuls', 'prestasis'));
+        $jumlahGuru = Guru::count();
+        $jumlahSiswa = Siswa::count();
+        return view('public.pagesmatn', compact( 'video_galleries', 'eskuls', 'prestasis', 'jumlahGuru', 'jumlahSiswa'));
     }
 
     public function sejarah()
@@ -37,7 +41,8 @@ class PublicController extends Controller
 
     public function penguruspamong()
     {
-        return view('public.profil.penguruspamongsmatn');
+        $guru = Guru::all();
+        return view('public.profil.penguruspamongsmatn', compact('guru'));
     }
 
     public function eventnews()
@@ -67,5 +72,11 @@ class PublicController extends Controller
     public function organisasi()
     {
         return view('public.organisasismatn');
+    }
+
+    public function dataSiswa()
+    {
+        $siswa = Siswa::all();
+        return view('public.dataSiswa', compact('siswa'));
     }
 }

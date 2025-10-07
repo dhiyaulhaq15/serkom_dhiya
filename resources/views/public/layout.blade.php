@@ -51,10 +51,10 @@
                         </button>
                         <div x-show="open" @click.away="open = false" x-transition
                             class="absolute left-0 mt-7 w-60 bg-white rounded-sm shadow-lg border border-gray-200 z-50">
+                            <a href="{{ route('public.dataSiswa') }}"
+                                class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600">Data Siswa</a>
                             <a href="{{ route('public.prestasismatn') }}"
                                 class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600">Prestasi</a>
-                            <a href="{{ route('public.organisasismatn') }}"
-                                class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600">Organisasi</a>
                             <a href="{{ route('public.eskulsmatn') }}"
                                 class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600">Ekstrakurikuler</a>
                         </div>

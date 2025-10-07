@@ -68,7 +68,7 @@
     </section>
     <section class="py-16">
         <div class="max-w-7xl mx-auto px-6 text-center">
-            <h2 class="text-xl md:text-4xl font-bold text-black-800">Kepala SMA Taruna Nusantara Dari Masa Ke Masa
+            <h2 class="text-xl md:text-4xl font-bold text-black-800">Kepala SMA Taruna Singaparna Dari Masa Ke Masa
             </h2>
             <div class="flex gap-6 mt-6 flex-wrap">
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition duration-300 w-72">

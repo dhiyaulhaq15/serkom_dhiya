@@ -20,7 +20,7 @@
                             <p class="text-gray-600 text-sm leading-relaxed line-clamp-3">
                                 {{ Str::limit($eventnews->content, 100, '...') }}
                             </p>
-                            <a href="#"
+                            <a href="https://share.google/iGiUAGdWCeqQxcZO3"
                                 class="inline-block mt-4 text-blue-600 hover:underline text-sm font-medium">Baca
                                 Selengkapnya →</a>
                         </div>

@@ -11,10 +11,6 @@
                 </h1>
                 <p class="mt-6 max-w-xl text-gray-200">Siswa tidak hanya belajar, tapi juga dilatih, diasuh, dan
                     dibentuk menjadi generasi pemimpin bangsa.</p>
-                <a href="/daftar"
-                    class="mt-8 inline-block px-8 py-3 rounded-lg bg-blue-600 hover:bg-blue-700 font-semibold shadow-lg transition">
-                    Daftar Sekarang
-                </a>
             </div>
             <div class="flex-1 flex justify-center">
                 <img src="{{ asset('images/1-8.png') }}" class="max-w-md w-full rounded-xl shadow-xl">
@@ -28,16 +24,31 @@
             <p class="text-gray-600 mt-2 mb-12">Data nyata yang mencerminkan kualitas dan dedikasi kami.</p>
 
             <div class="grid grid-cols-2 md:grid-cols-4 gap-10">
-                <div class="flex flex-col items-center" x-data="{ count: 0 }" x-init="let i = setInterval(() => { count++; if (count >= 450) clearInterval(i) }, 10)">
+                {{-- <div class="flex flex-col items-center" x-data="{ count: 0, target: {{ $jumlahSiswa }} }" x-init="let i = setInterval(() => { count++; if (count >= 450) clearInterval(i) }, 10)">
+                    <i class="ri-user-star-line text-4xl text-blue-600 mb-3"></i>
+                    <h3 class="text-4xl font-bold text-gray-800" x-text="count"></h3>
+                    <p class="text-sm text-gray-500">Jumlah Siswa</p>
+                </div> --}}
+                {{-- <div class="flex flex-col items-center" x-data="{ count: 0 }" x-init="let i = setInterval(() => { count++; if (count >= 99) clearInterval(i) }, 20)">
+                    <i class="ri-award-line text-4xl text-green-600 mb-3"></i>
+                    <h3 class="text-4xl font-bold text-gray-800" x-text="count"></h3>
+                    <p class="text-sm text-gray-500">Jumlah Guru</p>
+                </div> --}}
+                <div class="flex flex-col items-center"
+                    x-data="{ count: 0, target: {{ $jumlahSiswa }} }"
+                    x-init="let i = setInterval(() => { count++; if (count >= target) clearInterval(i) }, 20)">
                     <i class="ri-user-star-line text-4xl text-blue-600 mb-3"></i>
                     <h3 class="text-4xl font-bold text-gray-800" x-text="count"></h3>
                     <p class="text-sm text-gray-500">Jumlah Siswa</p>
                 </div>
-                <div class="flex flex-col items-center" x-data="{ count: 0 }" x-init="let i = setInterval(() => { count++; if (count >= 99) clearInterval(i) }, 20)">
+                <div class="flex flex-col items-center"
+                    x-data="{ count: 0, target: {{ $jumlahGuru }} }"
+                    x-init="let i = setInterval(() => { count++; if (count >= target) clearInterval(i) }, 20)">
                     <i class="ri-award-line text-4xl text-green-600 mb-3"></i>
                     <h3 class="text-4xl font-bold text-gray-800" x-text="count"></h3>
                     <p class="text-sm text-gray-500">Jumlah Guru</p>
                 </div>
+
                 <div class="flex flex-col items-center" x-data="{ count: 0 }" x-init="let i = setInterval(() => { count++; if (count >= 8) clearInterval(i) }, 200)">
                     <i class="ri-bar-chart-line text-4xl text-yellow-500 mb-3"></i>
                     <h3 class="text-4xl font-bold text-gray-800" x-text="'#' + count"></h3>
@@ -75,7 +86,7 @@
                 </div>
                 <div class="bg-blue-700 text-white text-center px-4 py-2 mt-4 rounded-lg shadow">
                     <h3 class="font-semibold text-lg">Sugiono B.Sc, M.BA</h3>
-                    <p class="text-sm opacity-90">Kepala SMA Taruna Nusantara Kampus Cimahi</p>
+                    <p class="text-sm opacity-90">Kepala SMA Taruna Singaparna Kampus Cimahi</p>
                 </div>
             </div>
 
@@ -106,13 +117,20 @@
         </div>
     </section>
 
-    <section class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-6 text-center justify-center">
+    <section class="py-10 bg-white">
+        <div class="max-w-7xl mx-auto px-6 text-center justify-center
+        ">
             <h2 class="text-3xl md:text-4xl font-bold text-blue-800 mb-10">Prestasi</h2>
-            <div class="flex gap-5 items-center">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-2 mb-12">
                 @foreach ($prestasis as $prestasi)
-                    <img class="rounded-2xl w-[400px] h-[400px] object-contain" src="{{ asset('storage/' . $prestasi->image) }}" alt="">
+                    <img class="rounded-2xl h-[300px] object-contain" src="{{ asset('storage/' . $prestasi->image) }}" alt="">
                 @endforeach
+            </div>
+            <div class="text-center">
+                <a href="{{ route('public.prestasismatn') }}" target="_blank"
+                    class="inline-block px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition">
+                    Lihat Selengkapnya
+                </a>
             </div>
         </div>
     </section>
@@ -121,7 +139,7 @@
     <section class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-6 text-center">
             <h2 class="text-3xl md:text-4xl font-bold text-blue-800">Kurikulum Khusus</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-12 mb-12">
                 @foreach (range(1, 4) as $i)
                     <div class="bg-white rounded-xl shadow hover:shadow-xl transition overflow-hidden">
                         <img src="{{ asset('images/belanegara.jpg') }}" class="h-44 w-full object-cover">
@@ -132,6 +150,12 @@
                         </div>
                     </div>
                 @endforeach
+            </div>
+            <div class="text-center">
+                <a href="{{ route('public.galerivideosmatn') }}" target="_blank"
+                    class="inline-block px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition">
+                    Lihat Selengkapnya
+                </a>
             </div>
         </div>
     </section>
@@ -151,7 +175,7 @@
                     </div>
                 @endforeach
             </div> --}}
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-12 mb-12">
                 @foreach ($eskuls as $eskul)
                     <div class="bg-gray-50 rounded-xl shadow hover:shadow-xl transition overflow-hidden">
                         <img src="{{ asset('storage/' . $eskul->gambar) }}" class="h-44 w-full object-cover">
@@ -161,6 +185,12 @@
                         </div>
                     </div>
                 @endforeach
+            </div>
+            <div class="text-center">
+                <a href="{{ route('public.galerivideosmatn') }}" target="_blank"
+                    class="inline-block px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition">
+                    Lihat Selengkapnya
+                </a>
             </div>
         </div>
     </section>
